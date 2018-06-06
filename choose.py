@@ -1,15 +1,28 @@
 import numpy as np
+import scipy.io as sio
 from itertools import combinations
+import feature_extraction as fe
 
-def get_coherence_matrix(tuple1, tuple2):
-  return str(tuple1) + str(tuple2)
+def get_coherence_matrix(w, c, trial1, trial2):
+  person1 = trial1[0]
+  sig1 = trial1[1]
+  person2 = trial2[0]
+  sig2 = trial2[1]
 
-def process(pairs):
+  short = min(len(sig1), len(sig2))
+  sig1 = sig1[:short]
+  sig2 = sig2[:short]
+
+  A = fe.get_feature_matrix(sig1, w)
+  B = fe.get_feature_matrix(sig2, w)
+  phi_max = 10
+  return fe.N_matrix(A, B, c, phi_max)
+
+def process(pairs, w, c):
   labelled_data = []
   for pair in pairs:
-    tuple1 = pair[0]
-    tuple2 = pair[1]
-    labelled_data.append([get_coherence_matrix(tuple1, tuple2), (pair[0][0] == pair[1][0])])
+    print '(', pair[0][0], ',', pair[1][0], ')'
+    labelled_data.append([get_coherence_matrix(w, c, *pair), (pair[0][0] == pair[1][0])])
   return labelled_data
 
 # This function loops through a 2D array of data and ...
@@ -29,16 +42,24 @@ def get_pairs(trials):
 
 
 
+
+
+
+"""
+
+
 data = []
 person = [0, 1]
-for i in range(30):
+for i in range(5):
   data.append(person)
 
 trials = get_all_trials(data)
-# print 'all_trials:', trials
+print 'all_trials:', trials
 pairs = get_pairs(trials)
-# print 'combinations:', pairs
+print 'combinations:', pairs
 
-output = process(pairs)
-for o in output:
-  print o
+# output = process(pairs)
+# for o in output:
+#   print o
+
+"""
