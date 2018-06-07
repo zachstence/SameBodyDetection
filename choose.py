@@ -24,13 +24,25 @@ def process(pairs, w, c):
     labelled_data.append([get_coherence_matrix(w, c, *pair), (pair[0][0] == pair[1][0])])
   return labelled_data
 
-# This function loops through a 2D array of data and ...
+# Loop through 2D data with indices [person #, trial #]
 def get_all_trials(data):
   all_trials = []
+
+  # shorten all streams to the length of the shortest
+  shortest = len(data[0][0])
   for p in range(len(data)):
     for t in range(len(data[p])):
-      # with actual data we will be appending either a magnitude signal or feature matrix
-      all_trials.append([p, data[p][t]])
+      mag = data[p][t]
+      if len(mag) < shortest:
+        shortest = len(mag)
+
+  # append each magnitude stream to all_trials
+  for p in range(len(data)):
+    for t in range(len(data[p])):
+      mag = data[p][t]
+      mag = mag[:shortest]
+      all_trials.append([p, mag])
+
   return all_trials
 
 # This function returns all possible pairs of trials for "processing" later

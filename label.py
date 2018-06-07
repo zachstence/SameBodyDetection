@@ -2,7 +2,6 @@ import scipy.io as sio
 import numpy as np
 import choose
 
-
 # Import MatLab data as a dictionary
 mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
 
@@ -24,7 +23,7 @@ for person_index in range(len(data)):
   trials = []
   for t in range(len(activity)):
     trial = activity[t][0]
-    magnitude        = trial[5]
+    magnitude = trial[5]
     trials.append(magnitude)
 
   new_data.append(trials)
