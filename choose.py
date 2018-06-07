@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.io as sio
 from itertools import combinations
 import feature_extraction as fe
 
@@ -37,29 +36,3 @@ def get_all_trials(data):
 # This function returns all possible pairs of trials for "processing" later
 def get_pairs(trials):
   return list(combinations(trials, 2))
-
-
-
-
-
-
-
-
-"""
-
-
-data = []
-person = [0, 1]
-for i in range(5):
-  data.append(person)
-
-trials = get_all_trials(data)
-print 'all_trials:', trials
-pairs = get_pairs(trials)
-print 'combinations:', pairs
-
-# output = process(pairs)
-# for o in output:
-#   print o
-
-"""

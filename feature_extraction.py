@@ -1,19 +1,10 @@
-import scipy.io as sio
-import scipy.signal
 from scipy import signal
 import numpy as np
-import time
-import math
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import pandas as pd
 from math import modf
 
 DT = 0.02
 FS = 1/DT
 NUM_FEATURES = 7
-
 
 def get_mean(sig):
   return np.mean(sig)
@@ -35,7 +26,7 @@ def get_iqr(sig):
 
 def get_energy(sig):
   # Not sure what nperseg should be here
-  f_welch, S_xx_welch = scipy.signal.welch(sig, fs=FS, nperseg=len(sig)/2)
+  f_welch, S_xx_welch = signal.welch(sig, fs=FS, nperseg=len(sig)/2)
   df_welch = f_welch[1] - f_welch[0]
   dt = 1/FS
   f_fft = np.fft.fftfreq(len(sig), d=dt)
@@ -45,7 +36,7 @@ def get_energy(sig):
 
 def get_power(sig):
   # Not sure what nperseg should be here
-  f_welch, S_xx_welch = scipy.signal.welch(sig, fs=FS, nperseg=len(sig)/2)
+  f_welch, S_xx_welch = signal.welch(sig, fs=FS, nperseg=len(sig)/2)
   df_welch = f_welch[1] - f_welch[0]
   P_welch = np.sum(S_xx_welch) * df_welch
   return P_welch
@@ -64,7 +55,7 @@ def mag(sig):
   return np.linalg.norm(sig)
 
 def coherence(sig1, sig2):
-  coherence = scipy.signal.coherence(sig1, sig2
+  coherence = signal.coherence(sig1, sig2
     , FS    # I think this may be wrong because when we compute coherence its between two coherence windows containing samples, so should it be DT or window length? Also not sure how it affects the math at all
     , nperseg=len(sig1)/2) # Not sure what nperseg should be
   return coherence
@@ -129,58 +120,5 @@ def N_matrix(A, B, c, phi_max):
 
   return matrix
 
-# def get_c(coherence_window):
-#   return int((coherence_window) / (w * DT))
-
-
-#################### TESTING ####################
-'''
-
-# import MatLab data as a dictionary
-mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
-
-data = mat['full_data']
-
-person1 = 2
-act_index1 = 0
-trial_index1 = 0
-
-person2 = 20
-act_index2 = 1
-trial_index2 = 1
-sig1 = data[person1][0][0][0][act_index1][trial_index1][0][5]
-sig2 = data[person1][0][0][0][act_index1][trial_index2][0][5]
-
-short = min(len(sig1), len(sig2))
-# short = 200 ###################################################### TESTING WITH SHORTER SIGNALS
-
-sig1 = sig1[:short]
-sig2 = sig2[:short]
-
-
-print 'len(sig1):', len(sig1)
-print 'len(sig2):', len(sig2)
-
-w = 5
-A = get_feature_matrix(sig1, w)
-B = get_feature_matrix(sig2, w)
-
-print 'A:', A
-print 'B:', B
-
-coherence_window = 4 # in seconds
-phi_max = 10
-c = int((coherence_window) / (w * DT))
-
-print 'samples per window', w, 'samples'
-print 'dt', DT, 'seconds'
-print 'window length', w * DT, 'seconds'
-print 'coherence window:', coherence_window, 'seconds'
-print 'c:', c, 'windows'
-print '\n\n\n\n'
-
-
-coherence_matrix = N_matrix(A, B, c, phi_max)
-print coherence_matrix
-
-'''
+def get_c(w, coherence_window):
+  return int((coherence_window) / (w * DT))
