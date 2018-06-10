@@ -6,10 +6,10 @@ for i in range(5):
   data.append(person)
 
 trials = choose.get_all_trials(data)
-print 'all_trials:', trials
+print('all_trials: ' + str(trials))
 pairs = choose.get_pairs(trials)
-print 'combinations:', pairs
+print('combinations: ' + str(pairs))
 
 output = choose.process(pairs)
 for o in output:
-  print o
+  print(o)

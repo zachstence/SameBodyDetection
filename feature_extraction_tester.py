@@ -1,4 +1,5 @@
-import feature_extraction
+import feature_extraction as fe
+import scipy.io as sio
 
 # import MatLab data as a dictionary
 mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
@@ -22,27 +23,26 @@ sig1 = sig1[:short]
 sig2 = sig2[:short]
 
 
-print 'len(sig1):', len(sig1)
-print 'len(sig2):', len(sig2)
+print('len(sig1): {}'.format(len(sig1)))
+print('len(sig2): {}'.format(len(sig2)))
 
 w = 5
-A = get_feature_matrix(sig1, w)
-B = get_feature_matrix(sig2, w)
+A = fe.get_feature_matrix(sig1, w)
+B = fe.get_feature_matrix(sig2, w)
 
-print 'A:', A
-print 'B:', B
+print('A: {}'.format(A))
+print('B: {}'.format(B))
 
 coherence_window = 4 # in seconds
 phi_max = 10
-c = int((coherence_window) / (w * DT))
+c = int((coherence_window) / (w * fe.DT))
 
-print 'samples per window', w, 'samples'
-print 'dt', DT, 'seconds'
-print 'window length', w * DT, 'seconds'
-print 'coherence window:', coherence_window, 'seconds'
-print 'c:', c, 'windows'
-print '\n\n\n\n'
+print('samples per window {} samples'.format(w))
+print('dt {} seconds'.format(fe.DT))
+print('window length {} seconds'.format(w * fe.DT))
+print('coherence window: {} seconds'.format(coherence_window))
+print('c: {} windows'.format(c))
+print('\n\n\n\n')
 
-
-coherence_matrix = N_matrix(A, B, c, phi_max)
-print coherence_matrix
+coherence_matrix = fe.N_matrix(A, B, c, phi_max)
+print(coherence_matrix)

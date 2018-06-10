@@ -20,7 +20,6 @@ def get_coherence_matrix(w, c, trial1, trial2):
 def process(pairs, w, c):
   labelled_data = []
   for pair in pairs:
-    print '(', pair[0][0], ',', pair[1][0], ')'
     labelled_data.append([get_coherence_matrix(w, c, *pair), (pair[0][0] == pair[1][0])])
   return labelled_data
 

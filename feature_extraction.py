@@ -83,7 +83,7 @@ def split(sig, w):
   return np.split(sig, num_windows)
 
 def get_feature_matrix(sig, w):
-  num_windows = len(sig) / w
+  num_windows = int(len(sig) / w)
   windows = split(sig, w)
 
   matrix = np.empty([num_windows, NUM_FEATURES])
