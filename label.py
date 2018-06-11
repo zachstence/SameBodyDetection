@@ -8,7 +8,7 @@ mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
 # Get numpy arrays containing data
 data = mat['full_data']
 
-num_people = 3
+num_people = 10
 data = data[:num_people]
 
 new_data = []
@@ -42,6 +42,9 @@ c = choose.fe.get_c(w, coherence_window)
 
 labelled = choose.process(pairs, w, c)
 
+rows = choose.get_all_rows(labelled)
+
+
 filename = (str(num_people) + '_labelled') + '.npy'
-np.save(filename, labelled)
+np.save(filename, rows)
 

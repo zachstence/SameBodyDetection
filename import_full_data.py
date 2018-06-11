@@ -26,17 +26,23 @@ import matplotlib.pyplot as plt
 
 # given the accel_data for a particular person and a list of desired activities, extract all data
 def getAccelData(accel_data):
-  for act_index in range(len(accel_data)):
-    activity = accel_data[act_index]
-    for trial_index in range(len(activity)):
-      trial = activity[trial_index][0]
-      x_accel          = trial[0]
-      y_accel          = trial[1]
-      z_accel          = trial[2]
-      time_nanoseconds = trial[3]
-      time_seconds     = trial[4]
-      magnitude        = trial[5]
-      # At this point all fields are in variables for later processing
+  total = 0
+  count = 0
+  # for act_index in range(len(accel_data)):
+  act_index = 2
+  activity = accel_data[act_index]
+  for trial_index in range(len(activity)):
+    trial = activity[trial_index][0]
+    x_accel          = trial[0]
+    y_accel          = trial[1]
+    z_accel          = trial[2]
+    time_nanoseconds = trial[3]
+    time_seconds     = trial[4]
+    magnitude        = trial[5]
+    total += len(magnitude)
+    count += 1
+    # At this point all fields are in variables for later processing
+  print("average = {}".format(total / count))
 
 # List of activities in dataset
 # ACTIVITIES = ['StandingUpFS',
@@ -64,10 +70,26 @@ mat = scipy.loadmat('./UniMiB-SHAR/data/full_data.mat')
 data = mat['full_data']
 
 # Loop through data and extract all fields into variables
+total = 0
+count = 0
 for i in range(len(data)):
   accel_data = data[i][0][0][0] # because each is wrapped in a 2D array
   gender     = data[i][1][0][0]
   age        = data[i][2][0][0]
   height     = data[i][3][0][0]
   weight     = data[i][4][0][0]
-  getAccelData(accel_data)
+  # for act_index in range(len(accel_data)):
+  act_index = 2
+  activity = accel_data[act_index]
+  for trial_index in range(len(activity)):
+    trial = activity[trial_index][0]
+    x_accel          = trial[0]
+    y_accel          = trial[1]
+    z_accel          = trial[2]
+    time_nanoseconds = trial[3]
+    time_seconds     = trial[4]
+    magnitude        = trial[5]
+    total += len(magnitude)
+    count += 1
+    # At this point all fields are in variables for later processing
+print("average = {}".format(total / count))
