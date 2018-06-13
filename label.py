@@ -8,7 +8,7 @@ mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
 # Get numpy arrays containing data
 data = mat['full_data']
 
-num_people = 10
+num_people = 30
 data = data[:num_people]
 
 new_data = []
