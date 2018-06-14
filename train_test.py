@@ -161,6 +161,8 @@ def get_train_test(data, ratio):
 
 # class_weight = {True : , False : }
 
+
+'''
 data = np.load('30_labelled.npy')
 
 
@@ -170,7 +172,7 @@ x_train, y_train, x_test, y_test = get_train_test(data, 0.8)
 
 dict_models = batch_classify(x_train, y_train, x_test, y_test, no_classifiers = 4, verbose = True)
 display_dict_models(dict_models)
-
+'''
 
 
 
