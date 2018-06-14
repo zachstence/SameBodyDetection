@@ -8,7 +8,7 @@ mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
 # Get numpy arrays containing data
 data = mat['full_data']
 
-num_people = 30
+num_people = 15
 data = data[:num_people]
 
 new_data = []
@@ -34,9 +34,9 @@ trials = choose.get_all_trials(new_data)
 pairs = choose.get_pairs(trials)
 
 # Samples per window
-w = 5
+w = 4
 # Seconds per coherence calculation
-coherence_window = 3
+coherence_window = 2
 
 c = choose.fe.get_c(w, coherence_window)
 
@@ -44,7 +44,5 @@ labelled = choose.process(pairs, w, c)
 
 rows = choose.get_all_rows(labelled)
 
-
-filename = (str(num_people) + '_labelled') + '.npy'
+filename = ('p' + str(num_people) + '_w' + str(w) + '_cw' + str(coherence_window)) + '.npy'
 np.save(filename, rows)
-
