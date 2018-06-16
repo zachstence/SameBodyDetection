@@ -63,23 +63,17 @@ def coherence(sig1, sig2):
 def N_signal(sig1, sig2, phi_max):
   f, C_xy = coherence(sig1, sig2)
   f[f < 10]
-  # print 'f:', f
-  # print 'C_xy:', C_xy
   C_xy = C_xy[:len(f)]
-  # print 'trapz:', np.trapz(C_xy)
-  # print 'sum:', np.sum(C_xy)
   return 1/float(phi_max) * np.sum(C_xy)
 
 def split(sig, w):
   num_windows = float(len(sig)) / w
   dec, i = modf(num_windows)
-  # print 'num_windows:', num_windows
   if num_windows != int(num_windows):
     cutoff = dec * w
     last = int(round(-1*cutoff))
     sig = sig[:last]
     num_windows = i
-  # print 'num_windows:', num_windows
   return np.split(sig, num_windows)
 
 def get_feature_matrix(sig, w):
@@ -98,27 +92,21 @@ def get_feature_matrix(sig, w):
 def N_matrix(A, B, c, phi_max):
   num_windows = len(A)
   rows = num_windows - (c - 1)
-  # print 'rows:', num_windows, '-(', c, '-1)=', rows
   matrix = np.empty([rows, NUM_FEATURES])
 
   for f in range(0, 7):
     A_feature = np.transpose(A)[f]
     B_feature = np.transpose(B)[f]
-    # print 'A_feature:', A_feature
-    # print 'B_feature:', B_feature
 
     for k in range(0, rows):
       A_samples = A_feature[k:k+c]
       B_samples = B_feature[k:k+c]
-      # print 'A_samples:', A_samples
-      # print 'B_samples:', B_samples
       cell = N_signal(A_samples, B_samples, phi_max)
-      # print cell
-      # print '\n'
 
       matrix[k][f] = cell
 
   return matrix
 
 def get_c(w, coherence_window):
-  return int((coherence_window) / (w * DT))
+  c = int((coherence_window) / (w * DT))
+  return c
