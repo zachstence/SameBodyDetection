@@ -27,18 +27,22 @@ from sklearn.gaussian_process.kernels import RBF
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+from sklearn.gaussian_process import GaussianProcessRegressor
+
 dict_classifiers = {
-    "Logistic Regression": LogisticRegression(),
+    # "Logistic Regression": LogisticRegression(),
     "Nearest Neighbors": KNeighborsClassifier(),
     "Linear SVM": SVC(),
-    # "Gradient Boosting Classifier": GradientBoostingClassifier(n_estimators=1000),
+    "Gradient Boosting Classifier": GradientBoostingClassifier(n_estimators=1000),
     "Decision Tree": tree.DecisionTreeClassifier(),
-    # "Random Forest": RandomForestClassifier(n_estimators=1000),
+    "Random Forest": RandomForestClassifier(n_estimators=1000),
     # "Neural Net": MLPClassifier(alpha = 1),
-    "Naive Bayes": GaussianNB(),
+    # "Naive Bayes": GaussianNB(),
     # "AdaBoost": AdaBoostClassifier(),
     # "QDA": QuadraticDiscriminantAnalysis(),
-    # "Gaussian Process": GaussianProcessClassifier()
+    # "Gaussian Process": GaussianProcessRegressor()
 }
 
 
@@ -164,7 +168,7 @@ def get_train_test(data, ratio):
 
 p = 15
 w = 4
-cw = 2
+cw = 9
 data = np.load('p' + str(p) + '_w' + str(w) + '_cw' + str(cw) + '.npy')
 
 
@@ -172,7 +176,7 @@ x_train, y_train, x_test, y_test = get_train_test(data, 0.8)
 
 
 
-dict_models = batch_classify(x_train, y_train, x_test, y_test, no_classifiers = 4, verbose = True)
+dict_models = batch_classify(x_train, y_train, x_test, y_test, no_classifiers = 6, verbose = True)
 display_dict_models(dict_models)
 
 
