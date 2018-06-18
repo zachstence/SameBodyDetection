@@ -47,17 +47,6 @@ dict_classifiers = {
 
 
 def batch_classify(X_train, Y_train, X_test, Y_test, no_classifiers = 5, verbose = True):
-    """
-    This method, takes as input the X, Y matrices of the Train and Test set.
-    And fits them on all of the Classifiers specified in the dict_classifier.
-    The trained models, and accuracies are saved in a dictionary. The reason to use a dictionary
-    is because it is very easy to save the whole dictionary with the pickle module.
-    
-    Usually, the SVM, Random Forest and Gradient Boosting Classifier take quiet some time to train. 
-    So it is best to train them on a smaller dataset first and 
-    decide whether you want to comment them out or not based on the test accuracy score.
-    """
-    
     dict_models = {}
     for classifier_name, classifier in list(dict_classifiers.items())[:no_classifiers]:
         t_start = time.clock()
@@ -69,7 +58,7 @@ def batch_classify(X_train, Y_train, X_test, Y_test, no_classifiers = 5, verbose
         test_score = classifier.score(X_test, Y_test)
 
         y_pred = classifier.predict(X_test)
-        cm = metrics.confusion_matrix(y_test, y_pred)
+        cm = metrics.confusion_matrix(Y_test, y_pred)
         print_cm(cm)
         
         dict_models[classifier_name] = {'model': classifier, 'train_score': train_score, 'test_score': test_score, 'train_time': t_diff}
@@ -94,7 +83,6 @@ def display_dict_models(dict_models, sort_by='test_score'):
     print(df_.sort_values(by=sort_by, ascending=False))
 
 ############################################################################################
-
 
 
 
@@ -163,47 +151,15 @@ def get_train_test(data, ratio):
 
 
 
-# class_weight = {True : , False : }
 
 
-p = 15
-w = 4
-cw = 9
-data = np.load('p' + str(p) + '_w' + str(w) + '_cw' + str(cw) + '.npy')
+p = 30 # want this to be high
+w = 4  # want this to be low
+cw = 9 # want this to be high
+data = np.load('./data/' + 'p' + str(p) + '_w' + str(w) + '_cw' + str(cw) + '.npy')
 
 
 x_train, y_train, x_test, y_test = get_train_test(data, 0.8)
 
-
-
-dict_models = batch_classify(x_train, y_train, x_test, y_test, no_classifiers = 6, verbose = True)
+dict_models = batch_classify(x_train, y_train, x_test, y_test)
 display_dict_models(dict_models)
-
-
-
-
-
-# balanced = {True : 9.30614525, False : 0.52838927}
-# custom = {True : 9.5, False : 0.5}
-
-# clf = SVC()
-# clf.fit(x_train, y_train)
-
-# print("trained")
-
-# y_pred = clf.predict(x_test)
-
-# print("tested")
-
-# cm = metrics.confusion_matrix(y_test, y_pred)
-# print_cm(cm)
-
-# # acc = metrics.accuracy_score(y_test, y_pred)
-# # print("accuracy: " + str(acc))
-
-# # f1 = metrics.f1_score(y_test, y_pred)
-# # print("f1: " + str(f1))
-
-# cr = metrics.classification_report(y_test, y_pred)
-# print(cr)
-

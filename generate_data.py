@@ -5,16 +5,14 @@ import choose
 mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
 full_data = mat['full_data']
 
-# people = [30]
-# windows = [4, 8]
-# coherence_windows = [5, 7, 9]
-
-people = [15]
+people = [30]
 windows = [4]
-coherence_windows = [9]
+coherence_windows = [7]
 
 for p in people:
   data = full_data[:p]
+  data = np.delete(data, (19), axis=0)
+  print(len(data))
 
   new_data = []
   # Loop through dataset and append trials to new_data
