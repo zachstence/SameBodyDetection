@@ -3,6 +3,9 @@ import numpy as np
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import validation_curve
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.metrics import accuracy_score, precision_score, f1_score
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -20,32 +23,54 @@ data = np.load('../data/' + 'p' + str(p) + '_w' + str(w) + '_cw' + str(cw) + '.n
 x_train, y_train, x_test, y_test = tt.get_train_test(data, 0.8)
 
 
-# clf = KNeighborsClassifier()
-clf = RandomForestClassifier(n_estimators=100, max_features=4, min_samples_leaf=1)
+# RANDOM SEARCHING
+'''
+rf = RandomForestClassifier()
 
+param_options = {
+  'n_estimators' : range(100, 2001, 100),
+  # 'criterion' : [],
+  'max_features' : ['auto', 3, 4, 5],
+  'max_depth' : [None, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+  'min_samples_split' : [2, 5, 10],
+  'min_samples_leaf' : [1, 2, 4],
+  # 'min_weight_fraction_leaf' : [],
+  # 'max_leaf_nodes' : [],
+  # 'min_impurity_split' : [],
+  # 'min_impurity_decrease' : [],
+  'bootstrap' : [True, False]
+  # 'oob_score' : [],
+}
 
-param_name = 'min_samples_leaf'
-param_range = range(1, 20)
-scoring = 'accuracy'
-train_scores, test_scores = validation_curve(clf, x_train+x_test, y_train+y_test, 
-  param_name=param_name, param_range=param_range, cv=10, scoring=scoring)
+rf_random = RandomizedSearchCV(estimator = rf, param_distributions = param_options, 
+  n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
 
-# print(np.shape(train_scores))
-# print(np.shape(test_scores))
+rf_random.fit(x_train, y_train)
 
-train_scores_mean = np.mean(train_scores, axis=1)
-test_scores_mean = np.mean(test_scores, axis=1)
+print(rf_random.best_params_)
+'''
 
-# print(param_range)
-# print(train_scores_mean)
-# print(test_scores_mean)
+best = {'bootstrap': False, 'n_estimators': 600, 'min_samples_leaf': 1, 'max_depth': 40, 'max_features': 'auto', 'min_samples_split': 2}
 
-plt.plot(param_range, train_scores_mean, color='b')
-plt.plot(param_range, test_scores_mean, color='g')
+rf = RandomForestClassifier(**best)
 
-plt.xlabel(param_name)
-plt.ylabel(scoring)
+avg_acc = 0
+avg_prec = 0
+avg_f1 = 0
+num = 20
+for i in range(num):
+  rf.fit(x_train, y_train)
+  
+  y_pred = rf.predict(x_test)
+  
+  avg_acc += accuracy_score(y_test, y_pred)
+  avg_prec += precision_score(y_test, y_pred)
+  avg_f1 += f1_score(y_test, y_pred)
+  
+avg_acc /= num
+avg_prec /= num
+avg_f1 /= num
 
-
-plt.savefig(param_name + '_' + scoring + '.png')
-
+print('Average accuracy:  ' + str(avg_acc))
+print('Average precision: ' + str(avg_prec))
+print('Average F1 Score:  ' + str(avg_f1))
