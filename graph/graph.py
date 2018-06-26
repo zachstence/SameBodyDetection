@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import scipy.io as sio
 
 # Load data
-mat = sio.loadmat('./UniMiB-SHAR/data/full_data.mat')
+mat = sio.loadmat('../data/UniMiB-SHAR/data/full_data.mat')
 data = mat['full_data']
 
 # Specify person index
@@ -35,7 +35,7 @@ y_accel   = y_accel[:t]
 z_accel   = z_accel[:t]
 magnitude = magnitude[:t]
 
-plt.style.use('dark_background')
+# plt.style.use('dark_background')
 labels = ['x', 'y', 'z', 'magnitude']
 graphs = [x_accel, y_accel, z_accel, magnitude]
 colors = ['r', 'y', 'm', 'c']
@@ -56,4 +56,4 @@ fig.text(b, a, 'Acceleration (m/s^2)', va='center', rotation='vertical')
 plt.suptitle('Acceleration Data from Walking\n(time vs. acceleration)')
 
 # Save figure
-plt.savefig('fig.png', dpi=600, transparent=True)
+plt.savefig('example_light.png', dpi=600, transparent=False)

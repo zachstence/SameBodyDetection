@@ -25,7 +25,7 @@ for name in tt.dict_classifiers.keys():
   averages = []
   for cw in cws:
     print(cw)
-    data = np.load('./data/' + 'p' + str(p) + '_w' + str(w) + '_cw' + str(cw) + '.npy')
+    data = np.load('./data/walking/nperseg2/' + 'p' + str(p) + '_w' + str(w) + '_cw' + str(cw) + '.npy')
     x_train, y_train, x_test, y_test = tt.get_train_test(data, 0.8)
     
     runs = 10
@@ -37,7 +37,7 @@ for name in tt.dict_classifiers.keys():
 print(stats)
 
 colors = ['y', 'g', 'r', 'c', 'm']
-plt.style.use('dark_background')
+# plt.style.use('dark_background')
 
 for name, color in zip(stats.keys(), colors):
   plt.plot(cws, stats[name], color, label=name)
@@ -50,4 +50,4 @@ plt.yticks(np.arange(0.5, 1, 0.1))
 plt.legend()
 
 
-plt.savefig('avg10.png', dpi=600, transparent=True)
+plt.savefig('avg10_light.png', dpi=600, transparent=False)
