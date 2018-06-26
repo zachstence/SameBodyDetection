@@ -45,51 +45,44 @@ def getAccelData(accel_data):
   print("average = {}".format(total / count))
 
 # List of activities in dataset
-# ACTIVITIES = ['StandingUpFS',
-#               'StandingUpFL',
-#               'Walking',
-#               'Running',
-#               'GoingUpS',
-#               'Jumping',
-#               'GoingDownS',
-#               'LyingDownFS',
-#               'SittingDown',
-#               'FallingForw',
-#               'FallingRight',
-#               'FallingBack',
-#               'HittingObstacle',
-#               'FallingWithPS',
-#               'FallingBackSC',
-#               'Syncope',
-#               'FallingLeft']
+ACTIVITIES = ['StandingUpFS',
+              'StandingUpFL',
+              'Walking',
+              'Running',
+              'GoingUpS',
+              'Jumping',
+              'GoingDownS',
+              'LyingDownFS',
+              'SittingDown',
+              'FallingForw',
+              'FallingRight',
+              'FallingBack',
+              'HittingObstacle',
+              'FallingWithPS',
+              'FallingBackSC',
+              'Syncope',
+              'FallingLeft']
 
 # Import MatLab data as a dictionary
-mat = scipy.loadmat('./UniMiB-SHAR/data/full_data.mat')
+mat = scipy.loadmat('./data/UniMiB-SHAR/data/full_data.mat')
 
 # Get numpy arrays containing data
 data = mat['full_data']
 
 # Loop through data and extract all fields into variables
-total = 0
-count = 0
-for i in range(len(data)):
-  accel_data = data[i][0][0][0] # because each is wrapped in a 2D array
-  gender     = data[i][1][0][0]
-  age        = data[i][2][0][0]
-  height     = data[i][3][0][0]
-  weight     = data[i][4][0][0]
-  # for act_index in range(len(accel_data)):
-  act_index = 2
+# for i in range(len(data)):
+#   accel_data = data[i][0][0][0] # because each is wrapped in a 2D array
+#   gender     = data[i][1][0][0]
+#   age        = data[i][2][0][0]
+#   height     = data[i][3][0][0]
+#   weight     = data[i][4][0][0]
+#   # for act_index in range(len(accel_data)):
+#   act_index = 3
+#   activity = accel_data[act_index]
+#   print(len(activity))
+
+p = 0
+accel_data = data[p][0][0][0]
+for act_index in range(len(accel_data)):
   activity = accel_data[act_index]
-  for trial_index in range(len(activity)):
-    trial = activity[trial_index][0]
-    x_accel          = trial[0]
-    y_accel          = trial[1]
-    z_accel          = trial[2]
-    time_nanoseconds = trial[3]
-    time_seconds     = trial[4]
-    magnitude        = trial[5]
-    total += len(magnitude)
-    count += 1
-    # At this point all fields are in variables for later processing
-print("average = {}".format(total / count))
+  print("{} : {}".format(ACTIVITIES[act_index], len(activity)))
