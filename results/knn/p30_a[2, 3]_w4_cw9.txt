@@ -1,0 +1,18 @@
+(nperseg = 2, best = {'metric': 'euclidean', 'p': 1, 'weights': 'distance', 'algorithm': 'auto', 'leaf_size': 10, 'n_neighbors': 4})
+trials         : 10
+avg acc        : 0.6927966101694915
+avg prec       : 0.6607142857142857
+avg f1         : 0.7184466019417475
+avg_train_time : 0.025
+avg_test_time  : 0.0421875
+-----
+
+(nperseg = 2, best = {'p': 3, 'algorithm': 'auto', 'n_neighbors': 1, 'leaf_size': 10, 'weights': 'uniform', 'metric': 'minkowski'})
+trials         : 10
+avg acc        : 0.6813559322033899
+avg prec       : 0.6581259150805271
+avg f1         : 0.7050980392156863
+avg_train_time : 0.0171875
+avg_test_time  : 0.15625
+-----
+
