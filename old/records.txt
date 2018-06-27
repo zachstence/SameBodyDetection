@@ -1,0 +1,134 @@
+Fastest Training Time
+- Nearest Neighbors
+- Logistic Regression
+- Naive Bayes
+- SVM
+====================================================================================
+
+15 people, balanced
+-----------------------------------------------------------------------------------
+                     classifier  train_score  test_score  train_time
+6                 Random Forest     1.000000    0.565049    3.265625
+5             Nearest Neighbors     0.732134    0.563107    0.000000
+4           Logistic Regression     0.570248    0.547573    0.000000
+3                   Naive Bayes     0.561983    0.541748    0.000000
+7                    Neural Net     0.560525    0.541748    2.328125
+2  Gradient Boosting Classifier     0.996597    0.537864    1.890625
+0                    Linear SVM     0.561011    0.530097    0.218750
+1                 Decision Tree     1.000000    0.497087    0.015625
+-----------------------------------------------------------------------------------
+
+
+
+15 people, not balanced
+-----------------------------------------------------------------------------------
+                     classifier  train_score  test_score  train_time
+3             Nearest Neighbors     0.964450    0.967028    0.234375
+4                 Random Forest     1.000000    0.967028   63.781250
+0                    Neural Net     0.963545    0.966889   16.500000
+1                    Linear SVM     0.963545    0.966889    3.125000
+2           Logistic Regression     0.963545    0.966889    0.062500
+5  Gradient Boosting Classifier     0.975790    0.962716   16.937500
+6                   Naive Bayes     0.951892    0.955342    0.343750
+7                 Decision Tree     1.000000    0.932248    0.390625
+-----------------------------------------------------------------------------------
+
+
+
+30 people, balanced
+-----------------------------------------------------------------------------------
+                     classifier  train_score  test_score  train_time
+2           Logistic Regression     0.576735    0.593750    0.109375
+7                    Linear SVM     0.576735    0.588867    1.531250
+3                 Random Forest     1.000000    0.576172    6.406250
+5                    Neural Net     0.571114    0.576172    2.500000
+1             Nearest Neighbors     0.717498    0.562500    0.000000
+6                   Naive Bayes     0.563050    0.558594    0.000000
+4  Gradient Boosting Classifier     0.938416    0.549805    2.218750
+0                 Decision Tree     1.000000    0.521484    0.031250
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+=========================================================================================================
+
+15 people, not balanced
+-----------------------------------------------------------------------------------
+            classifier  train_score  test_score  train_time
+0  Logistic Regression     0.964137    0.964524    0.078125
+3           Linear SVM     0.964137    0.964524    2.375000
+2    Nearest Neighbors     0.965041    0.963411    0.265625
+1          Naive Bayes     0.950049    0.950195    0.375000
+-----------------------------------------------------------------------------------
+
+
+
+30 people, not balanced
+-----------------------------------------------------------------------------------
+            classifier  train_score  test_score  train_time
+1           Linear SVM     0.981579    0.980836   22.453125
+2  Logistic Regression     0.981579    0.980836    0.296875
+3    Nearest Neighbors     0.981824    0.980799    1.109375
+0          Naive Bayes     0.980382    0.980037    0.156250
+-----------------------------------------------------------------------------------
+
+
+30 people, not balanced (best performance)
+-----------------------------------------------------------------------------------
+            classifier  train_score  test_score  train_time
+0           Linear SVM     0.981688    0.980400   22.984375
+1  Logistic Regression     0.981688    0.980400    0.312500
+3    Nearest Neighbors     0.981915    0.980327    0.171875
+2          Naive Bayes     0.979556    0.978113    1.000000
+-----------------------------------------------------------------------------------
+
+
+
+
+
+=========================================================================================================
+
+
+trained Linear SVM in 0.86 s
+           predicted
+            F     T
+actual  F   337     172
+        T   277     238
+
+trained Naive Bayes in 0.02 s
+           predicted
+            F     T
+actual  F   339     170
+        T   281     234
+
+trained Logistic Regression in 0.02 s
+           predicted
+            F     T
+actual  F   296     213
+        T   245     270
+
+trained Decision Tree in 0.36 s
+           predicted
+            F     T
+actual  F   273     236
+        T   245     270
+
+            classifier  train_score  test_score  train_time
+0           Linear SVM     0.579912    0.561523    0.859375
+3          Naive Bayes     0.565494    0.559570    0.015625
+1  Logistic Regression     0.582600    0.552734    0.015625
+2        Decision Tree     1.000000    0.530273    0.359375
+
+
+
+
+
+
+
+
+
