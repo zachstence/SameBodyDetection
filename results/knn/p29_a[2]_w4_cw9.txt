@@ -1,0 +1,9 @@
+(nperseg = 2, best = {'algorithm': 'auto', 'n_neighbors': 5, 'metric': 'euclidean', 'weights': 'distance', 'leaf_size': 10, 'p': 1})
+trials         : 10
+avg acc        : 0.7797468354430379
+avg prec       : 0.7245762711864405
+avg f1         : 0.797202797202797
+avg_train_time : 0.0015625
+avg_test_time  : 0.003125
+-----
+
