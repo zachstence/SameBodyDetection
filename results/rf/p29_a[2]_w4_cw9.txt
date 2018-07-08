@@ -1,9 +1,0 @@
-(nperseg = 2, best = {'min_samples_leaf': 1, 'max_depth': 40, 'n_estimators': 1900, 'bootstrap': False, 'max_features': 'auto', 'min_samples_split': 5})
-trials         : 10
-avg acc        : 0.771898734177215
-avg prec       : 0.7480823344424296
-avg f1         : 0.7624574618797271
-avg_train_time : 7.740625
-avg_test_time  : 0.2
------
-

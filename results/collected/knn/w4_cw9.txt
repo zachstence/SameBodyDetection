@@ -1,0 +1,18 @@
+(best = {'n_neighbors': 4, 'leaf_size': 10, 'p': 1, 'metric': 'euclidean', 'algorithm': 'auto', 'weights': 'distance'})
+trials         : 10
+avg acc        : 0.7243485342019546
+avg prec       : 0.7162781430563856
+avg f1         : 0.7264093756314408
+avg_train_time : 0.065625
+avg_test_time  : 0.134375
+-----
+
+(best = {'n_neighbors': 4, 'leaf_size': 40, 'p': 4, 'metric': 'euclidean', 'algorithm': 'auto', 'weights': 'distance'})
+trials         : 10
+avg acc        : 0.7321864820846906
+avg prec       : 0.7262093576526566
+avg f1         : 0.7357637842723712
+avg_train_time : 0.0640625
+avg_test_time  : 0.1546875
+-----
+
