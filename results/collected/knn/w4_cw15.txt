@@ -1,0 +1,54 @@
+(best = {'algorithm': 'auto', 'leaf_size': 10, 'metric': 'minkowski', 'p': 3, 'n_neighbors': 2, 'weights': 'distance'})
+trials         : 10
+avg acc        : 0.7488450877733293
+avg prec       : 0.7426670698518293
+avg f1         : 0.75072596668195
+avg_train_time : 0.0609375
+avg_test_time  : 0.45625
+-----
+
+(best = {'p': 2, 'n_neighbors': 1, 'weights': 'distance', 'algorithm': 'auto', 'metric': 'chebyshev', 'leaf_size': 30})
+trials         : 1
+avg acc        : 0.7277486910994765
+avg prec       : 0.7214694369165914
+avg f1         : 0.7304878048780488
+avg_train_time : 0.03125
+avg_test_time  : 0.03125
+-----
+
+(best = {'p': 2, 'n_neighbors': 1, 'weights': 'distance', 'algorithm': 'auto', 'metric': 'chebyshev', 'leaf_size': 30})
+trials         : 1
+avg acc        : 0.7277486910994765
+avg prec       : 0.7214694369165914
+avg f1         : 0.7304878048780488
+avg_train_time : 0.046875
+avg_test_time  : 0.03125
+-----
+
+(best = {'p': 2, 'n_neighbors': 1, 'weights': 'distance', 'algorithm': 'auto', 'metric': 'chebyshev', 'leaf_size': 30})
+trials         : 1
+avg acc        : 0.7277486910994765
+avg prec       : 0.7214694369165914
+avg f1         : 0.7304878048780488
+avg_train_time : 0.046875
+avg_test_time  : 0.015625
+-----
+
+(best = {'p': 2, 'n_neighbors': 1, 'weights': 'distance', 'algorithm': 'auto', 'metric': 'chebyshev', 'leaf_size': 30})
+trials         : 1
+avg acc        : 0.7277486910994765
+avg prec       : 0.7214694369165914
+avg f1         : 0.7304878048780488
+avg_train_time : 0.03125
+avg_test_time  : 0.03125
+-----
+
+(best = {'p': 2, 'n_neighbors': 1, 'weights': 'distance', 'algorithm': 'auto', 'metric': 'chebyshev', 'leaf_size': 30})
+trials         : 1
+avg acc        : 0.7277486910994765
+avg prec       : 0.7214694369165914
+avg f1         : 0.7304878048780488
+avg_train_time : 0.046875
+avg_test_time  : 0.03125
+-----
+

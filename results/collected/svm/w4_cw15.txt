@@ -1,0 +1,9 @@
+(best = {'coef0': 0.6, 'gamma': 0.23353700948073103, 'kernel': 'rbf', 'shrinking': True, 'tol': 0.001, 'degree': 5, 'probability': True, 'C': 122.02493199439863, 'class_weight': None})
+trials         : 1
+avg acc        : 0.5742223591007084
+avg prec       : 0.5757575757575758
+avg f1         : 0.5688445345392171
+avg_train_time : 136.828125
+avg_test_time  : 3.984375
+-----
+

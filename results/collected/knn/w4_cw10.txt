@@ -1,0 +1,9 @@
+(best = {'algorithm': 'auto', 'leaf_size': 40, 'metric': 'euclidean', 'p': 4, 'n_neighbors': 4, 'weights': 'distance'})
+trials         : 10
+avg acc        : 0.7322374824267329
+avg prec       : 0.724487683709377
+avg f1         : 0.73870831574504
+avg_train_time : 0.05625
+avg_test_time  : 0.14375
+-----
+
