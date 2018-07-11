@@ -52,3 +52,14 @@ avg_train_time : 0.0025
 avg_test_time  : 0.013125
 -----
 
+
+( done with cv=10, grid search, best results possible )
+(best = {'metric': 'euclidean', 'algorithm': 'auto', 'p': 1, 'leaf_size': 10, 'weights': 'distance', 'n_neighbors': 4})
+trials         : 25
+avg acc        : 0.7164556962025317
+avg prec       : 0.6775510204081633
+avg f1         : 0.7477477477477481
+avg_train_time : 0.00375
+avg_test_time  : 0.003125
+-----
+

@@ -52,3 +52,15 @@ avg_train_time : 0.046875
 avg_test_time  : 0.03125
 -----
 
+************************************************************************************
+( cv10 grid search, best results possible )
+(best = {'p': 3, 'weights': 'uniform', 'algorithm': 'auto', 'metric': 'minkowski', 'n_neighbors': 1, 'leaf_size': 10})
+trials         : 25
+avg acc        : 0.7440714505697568
+avg prec       : 0.73828125
+avg f1         : 0.747262773722628
+avg_train_time : 0.058125
+avg_test_time  : 0.30625
+-----
+*************************************************************************************
+
