@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import scipy.io as sio
 
 # Load data
-mat = sio.loadmat('../data/UniMiB-SHAR/data/full_data.mat')
+mat = sio.loadmat('../../data/UniMiB-SHAR/data/full_data.mat')
 data = mat['full_data']
 
 # Specify person index
@@ -56,4 +56,4 @@ fig.text(b, a, 'Acceleration (m/s^2)', va='center', rotation='vertical')
 plt.suptitle('Acceleration Data from Walking\n(time vs. acceleration)')
 
 # Save figure
-plt.savefig('example_light.png', dpi=600, transparent=False)
+plt.savefig('example_light_trans.png', dpi=600, transparent=True)
