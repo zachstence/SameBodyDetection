@@ -1,0 +1,9 @@
+(best = {'metric': 'chebyshev', 'algorithm': 'auto', 'p': 1, 'leaf_size': 10, 'weights': 'distance', 'n_neighbors': 4})
+trials         : 25
+avg acc        : 0.7341772151898737
+avg prec       : 0.6880000000000002
+avg f1         : 0.7661469933184858
+avg_train_time : 0.001875
+avg_test_time  : 0.00375
+-----
+
