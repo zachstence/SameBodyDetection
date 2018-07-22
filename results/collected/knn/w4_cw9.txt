@@ -25,3 +25,12 @@ avg_train_time : 0.05625
 avg_test_time  : 0.146875
 -----
 
+(best = {'weights': 'distance', 'leaf_size': 10, 'n_neighbors': 4, 'p': 1, 'metric': 'euclidean', 'algorithm': 'auto'})
+trials         : 25
+avg acc        : 0.7290309446254072
+avg prec       : 0.7249647390691115
+avg f1         : 0.7299655102454854
+avg_train_time : 0.081875
+avg_test_time  : 0.193125
+-----
+
